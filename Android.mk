@@ -12,13 +12,16 @@ LOCAL_SHARED_LIBRARIES := liblog libcutils libdl libbase libutils libbinder_ndk
 
 ifeq ($(call math_gt_or_eq, 33, $(PLATFORM_SDK_VERSION)), true)
     LOCAL_SHARED_LIBRARIES += android.hardware.power-V3-ndk
+endif
+ifeq ($(call math_gt_or_eq, 34, $(PLATFORM_SDK_VERSION)), true)
+    LOCAL_SHARED_LIBRARIES += android.hardware.power-V4-ndk
 else
     LOCAL_SHARED_LIBRARIES += android.hardware.power-V1-ndk_platform
 endif
 
 LOCAL_HEADER_LIBRARIES += libutils_headers
 LOCAL_HEADER_LIBRARIES += libhardware_headers
-LOCAL_SRC_FILES := power-common.c metadata-parser.c utils.c list.c hint-data.c Power.cpp main.cpp
+LOCAL_SRC_FILES := power-common.c metadata-parser.c utils.c list.c hint-data.c Power.cpp main.cpp PowerHintSession.cpp
 
 # Include target-specific files.
 ifeq ($(call is-board-platform-in-list, msm8974), true)
