@@ -69,18 +69,6 @@ ifeq ($(call is-board-platform-in-list,sdm845), true)
 LOCAL_SRC_FILES += power-845.c
 endif
 
-ifeq ($(call is-board-platform-in-list,sdm710), true)
-LOCAL_SRC_FILES += power-710.c
-endif
-
-ifeq ($(call is-board-platform-in-list,qcs605), true)
-LOCAL_SRC_FILES += power-710.c
-endif
-
-ifeq ($(call is-board-platform-in-list,msmnile), true)
-LOCAL_SRC_FILES += power-msmnile.c
-endif
-
 ifneq ($(TARGET_TAP_TO_WAKE_NODE),)
     LOCAL_CFLAGS += -DTAP_TO_WAKE_NODE=\"$(TARGET_TAP_TO_WAKE_NODE)\"
 endif
